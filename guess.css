@@ -1,0 +1,167 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+}
+
+:root{
+    --main-color:#4C3BCF;
+    --secondary-color:#4F1787;
+}
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #180161;
+    color: white;
+    position: relative;
+}
+
+h1{
+    text-align: center;
+    text-transform: capitalize;
+    padding: 20px;
+    background-color: var(--main-color);
+    margin: 0 0 50px;
+}
+
+.guess-game{
+    text-align: center;
+    width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .game-area{
+        text-align: center;
+        .inputs{
+            div{
+                margin: 0 0 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                span{
+                    font-size: 20px;
+                    margin: 0 20px 0;
+                    font-weight: bold;
+                }
+            }
+            .inactive{
+                opacity: .5;
+                pointer-events: none;
+            }
+            input{
+                margin: 0 5px;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                font-size: 40px;
+                caret-color: var(--secondary-color);
+                background-color: white;
+                border: none;
+                border-bottom: 4px solid var(--main-color);
+                &.in-place{
+                    background-color: greenyellow;
+                    border: greenyellow;
+                }
+                &.not-in-place{
+                    background-color: orange;
+                    border: yellow;
+                }
+                &.incorrect{
+                    background-color: grey;
+                    border: grey;
+                }
+            }
+        }
+        .control{
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            button{
+                padding:15px;
+                font-size: 25px;
+                border: none;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+                color: white;
+                cursor: pointer;
+            }
+            button:disabled{
+                background-color: black;
+                opacity: .4;
+                cursor: no-drop;
+            }
+            .check{
+                background-color: var(--secondary-color);
+                flex: 1;
+            }
+            .hint{
+                background-color: var(--main-color);
+                width: fit-content;
+                span{
+                    color: yellow;
+                }
+            }
+        }
+    }
+    .key-colors{
+        background-color: var(--main-color);
+        text-transform: capitalize;
+        overflow: hidden;
+        border-radius: 10px;
+        h2{
+            margin: 20px 0;
+        }
+        .key-color{
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            margin: 10px 0 0;
+            .key{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                margin: 0 10px 0;
+                &.in-place{
+                    background-color: greenyellow;
+                }
+                &.not-in-place{
+                    background-color: orange;
+                }
+                &.incorrect{
+                    background-color: grey;
+                }
+            }
+        }
+    }
+}
+.massege{
+    transition: .2s;
+    margin-top: 20px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    -o-transition: .2s;
+    h2{
+        margin: 0 0 10px;
+    }
+    span{
+        font-size: 30px;
+        text-transform: capitalize;
+        color: yellow;
+    }
+}
