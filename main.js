@@ -8,6 +8,7 @@ let tries = 7;
 let Letters = 6;
 let currentTry = 1;
 let numOfHints = 2;
+let flag = true;
 
 //setting buttons
 const hintButton = document.querySelector(".hint")
@@ -158,6 +159,7 @@ function guess(){
         massage.append(cancelButton);
         cancelButton.addEventListener("click",()=>massage.style.display = "none");
         document.querySelector(".massege").style.display = "block"
+        flag = false;
     }else{
         //disabling failed attempt
         document.querySelector(`.try-${currentTry}`).classList.add("inactive");
@@ -187,6 +189,7 @@ function guess(){
             massage.append(cancelButton);
             cancelButton.addEventListener("click",()=>massage.style.display = "none");
             document.querySelector(".massege").style.display = "block"
+            flag = false;
         }
     }
 }
@@ -237,7 +240,7 @@ document.addEventListener("keydown",backspace);
 
 //managing enter
 function enter(event){
-    if(event.key === "Enter"){
+    if(event.key === "Enter" && flag){
         guess()
     }
 }
