@@ -101,7 +101,6 @@ function generateInput(){
 };
 
 //managing awnser button function
-answerButton.addEventListener("click", guess);
 function guess(){
     let successfulGuess = true;
     for(let i =1; i <= Letters; i++){
@@ -129,7 +128,12 @@ function guess(){
     let massage = document.querySelector('.massege');
     let h2 = document.createElement("h2");
     let p = document.createElement("p");
-    let span = document.createElement("span")
+    let span = document.createElement("span");
+    let tryAgainButton = document.createElement("button");
+    tryAgainButton.innerText = "Try again?"
+    let cancelButton = document.createElement("button");
+    cancelButton.innerText="X";
+    cancelButton.classList.add("cancel");
     if(successfulGuess){
         // disabling all inputs
         let allTries = document.querySelectorAll(".inputs > div");
@@ -149,6 +153,11 @@ function guess(){
         p.append(span);
         massage.append(h2);
         massage.append(p);
+        massage.append(tryAgainButton);
+        tryAgainButton.addEventListener("click",reloading);
+        massage.append(cancelButton);
+        cancelButton.addEventListener("click",()=>massage.style.display = "none");
+        document.querySelector(".massege").style.display = "block"
     }else{
         //disabling failed attempt
         document.querySelector(`.try-${currentTry}`).classList.add("inactive");
@@ -173,9 +182,15 @@ function guess(){
             p.append(span);
             massage.append(h2);
             massage.append(p);
+            massage.append(tryAgainButton);
+            tryAgainButton.addEventListener("click",reloading)
+            massage.append(cancelButton);
+            cancelButton.addEventListener("click",()=>massage.style.display = "none");
+            document.querySelector(".massege").style.display = "block"
         }
     }
 }
+answerButton.addEventListener("click", guess);
 //managing hint button
 hintButton.addEventListener("click", getHint);
 function getHint(){
@@ -193,6 +208,11 @@ function getHint(){
         const indexToFill = Array.from(enabledInputs).indexOf(randominput);
         randominput.value = turnWord[indexToFill].toUpperCase();
     }
+}
+
+//managing try again button 
+function reloading() {
+    location.reload();
 }
 
 //managing use of backspace
@@ -214,6 +234,14 @@ function backspace(event){
     }
 }
 document.addEventListener("keydown",backspace);
+
+//managing enter
+function enter(event){
+    if(event.key === "Enter"){
+        guess()
+    }
+}
+document.addEventListener("keydown",enter)
 
 
 window.onload = ()=>generateInput();
